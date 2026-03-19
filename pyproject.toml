@@ -1,0 +1,7 @@
+[project]
+name = "cooking-ai-stuff"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "recipe_grid>=2,<3"
+]
