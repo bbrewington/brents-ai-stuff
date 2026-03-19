@@ -167,6 +167,32 @@ When converting a raw recipe to the DSL:
 
 6. **Preserve the cook's language**: Use the recipe's own words for step descriptions where possible. "Fold gently" is better than "combine".
 
+7. **Model oven preheating (and similar appliance prep) as a parallel row**: Treat the oven as a pseudo-ingredient with a preheat step that merges at the baking/roasting step. This ensures it appears in the grid at the correct column - aligned with when the recipe says to start preheating, not buried or omitted.
+
+   - Use `oven` as the ingredient name (no quantity needed - recipe_grid renders it with a blank amount)
+   - Wrap it in a descriptive step: `"preheat to 375°F"(oven)`
+   - Make that step an input to the baking/roasting step alongside the other inputs
+
+   The column position follows naturally from tree depth: if preheat is a direct input to `bake(...)`, it appears in the column immediately before bake - which is correct when the recipe says "preheat while you prepare the other components". If the recipe says to preheat earlier (e.g., "preheat first, before any prep"), nest it deeper to push it left:
+   ```
+   bake(
+       ...(other prep steps),
+       "preheat to 375°F"(oven)   ← appears at same column as other bake inputs (parallel)
+   )
+   ```
+
+   Example - recipe says "preheat oven while searing the chicken, then bake":
+   ```
+   bake at 375°F for 30 min(
+       "return to skillet and add sauce"(
+           "sear until golden, 5 min per side"(seasoned chicken),
+           cream sauce,
+       ),
+       "preheat to 375°F"(oven),
+   )
+   ```
+   This puts the preheat row in the same column as the sauce-making, parallel to searing - exactly where the recipe says to do it.
+
 ## Step 3: Run the recipe_grid pipeline
 
 Once you have the DSL markdown, run the Python pipeline:

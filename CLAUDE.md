@@ -21,11 +21,14 @@ uv add recipe_grid
 
 ```bash
 # Convert recipe markdown DSL to JSON
-uv run skills/recipe-engineer/scripts/recipe_to_json.py input.md > output.json
+uv run skills/recipe-engineer/scripts/recipe_render.py input.md > output.json
+
+# Convert recipe markdown DSL to standalone HTML
+uv run skills/recipe-engineer/scripts/recipe_render.py input.md --html > output.html
 ```
 
 ## Key Files
 
 - `skills/recipe-engineer/SKILL.md` - primary operational guide (DSL syntax, pipeline, gotchas)
-- `skills/recipe-engineer/scripts/recipe_to_json.py` - core conversion engine
+- `skills/recipe-engineer/scripts/recipe_render.py` - core conversion engine (JSON and HTML output)
 - `skills/recipe-engineer/references/react-template.md` - React component reference

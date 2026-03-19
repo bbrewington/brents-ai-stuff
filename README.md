@@ -6,7 +6,7 @@ A collection of skills for [Claude Code](https://claude.ai/code) - Anthropic's A
 
 | Skill | What it does |
 |-------|-------------|
-| `recipe-engineer` | Converts any recipe into a Cooking for Engineers-style grid showing ingredient flow, parallel steps, and merges |
+| `recipe-engineer` | Converts any recipe into a [Cooking for Engineers](https://www.cookingforengineers.com)-style grid showing ingredient flow, parallel steps, and merges |
 
 ---
 
@@ -17,6 +17,8 @@ A collection of skills for [Claude Code](https://claude.ai/code) - Anthropic's A
 Maybe it's just me, but when I see blob-of-text recipes like this, it hurts my brain, and I find myself re-reading it 16 times as I'm cooking
 
 ![Recipe example: before using recipe-engineer](./img/example_recipe_before.png)
+
+Image source: https://www.delish.com/cooking/recipe-ideas/a46330/skillet-sicilian-chicken-recipe/
 
 **After**
 
